@@ -1,4 +1,4 @@
 class RouteConstants{
   static const initialRoute = "/";
-  static const homeRoute = "homeRoute";
+  static const homeScreen = "/homeRoute";
 }

@@ -10,28 +10,28 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SplashController controller = Get.find(tag: ControllerTagConstants.splashControllerTag);
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: AppColors.white,
-      child: controller.isLoading.value ?
-      Center(child: CircularProgressIndicator()):
-      ListView.builder(
-          itemCount: controller.characters.length,
-          itemBuilder: (context, index){
-return Card(
-  child: ListTile(
-    leading: Image(
-      image: NetworkImage(
-       controller.characters[index]['image'],
+    return Scaffold(
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(
+              Icons.flutter_dash,
+              color: AppColors.primaryColor,
+              size: 200,
+            ),
+            Text(
+              "Flutter GetX Demo",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.primaryColor),
+            )
+          ],
+        ),
       ),
-    ),
-    title: Text(
-      controller.characters[index]['name'],
-    ),
-  ),
-);
-      }),
     );
   }
 }
