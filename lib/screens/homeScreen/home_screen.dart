@@ -12,7 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeScreenController controller = Get.find(tag: ControllerTagConstants.homeController);
+    HomeScreenController controller =
+        Get.find(tag: ControllerTagConstants.homeController);
     return Obx(() => Loader(
         isCallInProgress: controller.isLoading.value,
         child: mainUi(
@@ -22,7 +23,10 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget mainUi(BuildContext context, HomeScreenController controller) {
-    return  Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Demo App"),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           controller: controller.scrollController,
@@ -30,7 +34,8 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
+              //API Listview builder
+              /* Text(
                 "Flutter GetX Demo",
                 style: StyleConstants.h128PxStyleBold(color: AppColors.primaryColor)
               ),
@@ -47,8 +52,27 @@ class HomeScreen extends StatelessWidget {
                    "Users not available",
                    style: StyleConstants.h128PxStyleBold(color: AppColors.primaryColor)
              ),
-              ),
+              ),*/
 
+              //onTap show slider demo
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 4.0, vertical: 18),
+                child: SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                      itemCount: controller.imageList.length,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return listCard(controller.imageList[index], controller,
+                            controller.imageList, index);
+                      }),
+                ),
+              ),
+              ElevatedButton(onPressed: () {
+                controller.onTapMapViewButton();
+              }, child: Text("Go To MapView"))
             ],
           ),
         ),
@@ -56,4 +80,26 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget listCard(String imgPath, HomeScreenController controller,
+      List<String> imageList, int currentIndex) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: GestureDetector(
+        onTap: () {
+          controller.onTapViewImageItem(Get.context!, imageList, currentIndex);
+        },
+        child: Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+              border: Border.all(color: AppColors.black),
+              borderRadius: BorderRadius.circular(10)),
+          child: Image.network(
+            imgPath,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
 }
