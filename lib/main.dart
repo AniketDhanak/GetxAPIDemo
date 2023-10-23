@@ -7,12 +7,10 @@ import 'package:getx_api_demo_mvc/constants/routes_constants.dart';
 import 'package:getx_api_demo_mvc/constants/string_constants.dart';
 import 'package:getx_api_demo_mvc/extensions/color_extensions.dart';
 import 'package:getx_api_demo_mvc/routes/app_routes.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async{
    WidgetsFlutterBinding.ensureInitialized();
-  await initHiveForFlutter();
   runApp(const MyApp());
 }
 

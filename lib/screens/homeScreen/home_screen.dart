@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_api_demo_mvc/constants/app_colors.dart';
 import 'package:getx_api_demo_mvc/constants/controller_constants.dart';
-import 'package:getx_api_demo_mvc/constants/style_constants.dart';
 import 'package:getx_api_demo_mvc/screens/homeScreen/home_controller.dart';
 import 'package:getx_api_demo_mvc/screens/loader/loader.dart';
-import 'package:getx_api_demo_mvc/screens/usersCard/users_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -70,9 +68,6 @@ class HomeScreen extends StatelessWidget {
                       }),
                 ),
               ),
-              ElevatedButton(onPressed: () {
-                controller.onTapMapViewButton();
-              }, child: Text("Go To MapView"))
             ],
           ),
         ),

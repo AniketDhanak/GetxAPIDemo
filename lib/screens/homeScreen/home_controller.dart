@@ -37,11 +37,6 @@ class HomeScreenController extends GetxController {
     // getAllUsers(pageIndex.value);
   }
 
-  //onTapMapViewButton
-  onTapMapViewButton(){
-    Get.toNamed(RouteConstants.mapView);
-  }
-
 
   //onTap of image
   onTapViewImageItem(BuildContext context, List<String> list, int curIndex) {
